@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace DietApp
@@ -12,59 +11,6 @@ namespace DietApp
         {
             InitializeComponent();
             this.userManager = userManager;
-            InitializeBirthDateComboBoxes();
-        }
-
-        private void InitializeBirthDateComboBoxes()
-        {
-            for (int year = 1900; year <= DateTime.Now.Year; year++)
-            {
-                cmbYear.Items.Add(year);
-            }
-
-            for (int month = 1; month <= 12; month++)
-            {
-                cmbMonth.Items.Add(month);
-            }
-
-            for (int day = 1; day <= 31; day++)
-            {
-                cmbDay.Items.Add(day);
-            }
-        }
-
-        private void btnRegister_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string email = txtEmail.Text;
-                string password = txtPassword.Text;
-                string passwordConfirm = txtPasswordConfirm.Text;
-                string firstName = txtFirstName.Text;
-                string lastName = txtLastName.Text;
-                int year = int.Parse(cmbYear.SelectedItem.ToString());
-                int month = int.Parse(cmbMonth.SelectedItem.ToString());
-                int day = int.Parse(cmbDay.SelectedItem.ToString());
-                DateTime birthDate = new DateTime(year, month, day);
-                string gender = cmbGender.SelectedItem.ToString();
-                int height = int.Parse(txtHeight.Text);
-                int weight = int.Parse(txtWeight.Text);
-                int goalWeight = int.Parse(txtGoalWeight.Text);
-
-                if (password != passwordConfirm)
-                {
-                    MessageBox.Show("パスワードが一致しません。");
-                    return;
-                }
-
-                userManager.Register(email, password, firstName, lastName, birthDate, gender, height, weight, goalWeight);
-                MessageBox.Show("登録が完了しました。");
-                this.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("エラーが発生しました: " + ex.Message);
-            }
         }
 
         private void chkShowPassword_CheckedChanged(object sender, EventArgs e)
@@ -77,43 +23,32 @@ namespace DietApp
             txtPasswordConfirm.PasswordChar = chkShowPasswordConfirm.Checked ? '\0' : '*';
         }
 
-        private void txtPassword_Enter(object sender, EventArgs e)
+        private void btnRegister_Click(object sender, EventArgs e)
         {
-            if (txtPassword.ForeColor == Color.Gray)
-            {
-                txtPassword.Text = "";
-                txtPassword.ForeColor = Color.Black;
-                txtPassword.PasswordChar = '*';
-            }
-        }
+            string email = txtEmail.Text;
+            string password = txtPassword.Text;
+            string passwordConfirm = txtPasswordConfirm.Text;
+            string firstName = txtFirstName.Text;
+            string lastName = txtLastName.Text;
+            int age = int.Parse(txtAge.Text);
+            string gender = cmbGender.SelectedItem.ToString();
+            float height = float.Parse(txtHeight.Text);
 
-        private void txtPassword_Leave(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtPassword.Text))
+            if (password != passwordConfirm)
             {
-                txtPassword.PasswordChar = '\0';
-                txtPassword.Text = "パスワードは英大文字、英小文字、数字を含んだ8文字です。";
-                txtPassword.ForeColor = Color.Gray;
+                MessageBox.Show("パスワードが一致しません。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-        }
 
-        private void txtPasswordConfirm_Enter(object sender, EventArgs e)
-        {
-            if (txtPasswordConfirm.ForeColor == Color.Gray)
+            try
             {
-                txtPasswordConfirm.Text = "";
-                txtPasswordConfirm.ForeColor = Color.Black;
-                txtPasswordConfirm.PasswordChar = '*';
+                userManager.Register(email, password, firstName, lastName, age, gender, height);
+                MessageBox.Show("登録が完了しました。", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
             }
-        }
-
-        private void txtPasswordConfirm_Leave(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtPasswordConfirm.Text))
+            catch (Exception ex)
             {
-                txtPasswordConfirm.PasswordChar = '\0';
-                txtPasswordConfirm.Text = "パスワードを再入力";
-                txtPasswordConfirm.ForeColor = Color.Gray;
+                MessageBox.Show(ex.Message, "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

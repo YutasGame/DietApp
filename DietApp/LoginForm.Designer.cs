@@ -28,7 +28,7 @@
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(35, 25);
+            this.lblEmail.Location = new System.Drawing.Point(12, 15);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(77, 13);
             this.lblEmail.TabIndex = 0;
@@ -36,15 +36,15 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(120, 22);
+            this.txtEmail.Location = new System.Drawing.Point(15, 31);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(200, 20);
+            this.txtEmail.Size = new System.Drawing.Size(305, 20);
             this.txtEmail.TabIndex = 1;
             // 
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(35, 60);
+            this.lblPassword.Location = new System.Drawing.Point(12, 65);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(68, 13);
             this.lblPassword.TabIndex = 2;
@@ -52,39 +52,18 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(120, 57);
+            this.txtPassword.Location = new System.Drawing.Point(15, 81);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(200, 20);
+            this.txtPassword.Size = new System.Drawing.Size(305, 20);
             this.txtPassword.TabIndex = 3;
-            // 
-            // chkShowPassword
-            // 
-            this.chkShowPassword.AutoSize = true;
-            this.chkShowPassword.Location = new System.Drawing.Point(120, 83);
-            this.chkShowPassword.Name = "chkShowPassword";
-            this.chkShowPassword.Size = new System.Drawing.Size(120, 17);
-            this.chkShowPassword.TabIndex = 4;
-            this.chkShowPassword.Text = "パスワードを表示する";
-            this.chkShowPassword.UseVisualStyleBackColor = true;
-            this.chkShowPassword.CheckedChanged += new System.EventHandler(this.chkShowPassword_CheckedChanged);
-            // 
-            // chkAutoLogin
-            // 
-            this.chkAutoLogin.AutoSize = true;
-            this.chkAutoLogin.Location = new System.Drawing.Point(120, 106);
-            this.chkAutoLogin.Name = "chkAutoLogin";
-            this.chkAutoLogin.Size = new System.Drawing.Size(122, 17);
-            this.chkAutoLogin.TabIndex = 5;
-            this.chkAutoLogin.Text = "次回から自動ログインする";
-            this.chkAutoLogin.UseVisualStyleBackColor = true;
             // 
             // btnLogin
             // 
             this.btnLogin.Location = new System.Drawing.Point(120, 130);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(75, 23);
-            this.btnLogin.TabIndex = 6;
+            this.btnLogin.TabIndex = 4;
             this.btnLogin.Text = "ログイン";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -92,21 +71,42 @@
             // linkRegister
             // 
             this.linkRegister.AutoSize = true;
-            this.linkRegister.Location = new System.Drawing.Point(90, 165);
+            this.linkRegister.Location = new System.Drawing.Point(80, 165);
             this.linkRegister.Name = "linkRegister";
             this.linkRegister.Size = new System.Drawing.Size(156, 13);
-            this.linkRegister.TabIndex = 7;
+            this.linkRegister.TabIndex = 5;
             this.linkRegister.TabStop = true;
             this.linkRegister.Text = "アカウントをお持ちでない方はこちら";
             this.linkRegister.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkRegister_LinkClicked);
             // 
+            // chkShowPassword
+            // 
+            this.chkShowPassword.AutoSize = true;
+            this.chkShowPassword.Location = new System.Drawing.Point(15, 107);
+            this.chkShowPassword.Name = "chkShowPassword";
+            this.chkShowPassword.Size = new System.Drawing.Size(120, 17);
+            this.chkShowPassword.TabIndex = 6;
+            this.chkShowPassword.Text = "パスワードを表示する";
+            this.chkShowPassword.UseVisualStyleBackColor = true;
+            this.chkShowPassword.CheckedChanged += new System.EventHandler(this.chkShowPassword_CheckedChanged);
+            // 
+            // chkAutoLogin
+            // 
+            this.chkAutoLogin.AutoSize = true;
+            this.chkAutoLogin.Location = new System.Drawing.Point(15, 150);
+            this.chkAutoLogin.Name = "chkAutoLogin";
+            this.chkAutoLogin.Size = new System.Drawing.Size(122, 17);
+            this.chkAutoLogin.TabIndex = 7;
+            this.chkAutoLogin.Text = "次回から自動ログインする";
+            this.chkAutoLogin.UseVisualStyleBackColor = true;
+            // 
             // LoginForm
             // 
             this.ClientSize = new System.Drawing.Size(350, 200);
-            this.Controls.Add(this.linkRegister);
-            this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.chkAutoLogin);
             this.Controls.Add(this.chkShowPassword);
+            this.Controls.Add(this.linkRegister);
+            this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.txtEmail);

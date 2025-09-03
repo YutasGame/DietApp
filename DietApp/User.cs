@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace DietApp
+﻿namespace DietApp
 {
     public class User
     {
@@ -8,10 +6,8 @@ namespace DietApp
         public string Password { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public DateTime BirthDate { get; set; }
+        public int Age { get; set; }
         public string Gender { get; set; }
-        public int Height { get; set; }
-        public int Weight { get; set; }
-        public int GoalWeight { get; set; }
+        public float Height { get; set; }
     }
 }

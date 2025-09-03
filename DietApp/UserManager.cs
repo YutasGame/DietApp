@@ -5,29 +5,48 @@ namespace DietApp
 {
     public class UserManager
     {
-        private List<User> users = new List<User>();
+        private List<User> users;
 
-        public void Register(string email, string password, string firstName, string lastName, DateTime birthDate, string gender, int height, int weight, int goalWeight)
+        public UserManager()
         {
-            User user = new User
+            users = new List<User>();
+        }
+
+        public void Register(string email, string password, string firstName, string lastName, int age, string gender, float height)
+        {
+            if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
+            {
+                throw new ArgumentException("メールアドレスとパスワードは必須です。");
+            }
+
+            if (users.Exists(user => user.Email == email))
+            {
+                throw new ArgumentException("このメールアドレスは既に登録されています。");
+            }
+
+            User newUser = new User
             {
                 Email = email,
                 Password = password,
                 FirstName = firstName,
                 LastName = lastName,
-                BirthDate = birthDate,
+                Age = age,
                 Gender = gender,
-                Height = height,
-                Weight = weight,
-                GoalWeight = goalWeight
+                Height = height
             };
 
-            users.Add(user);
+            users.Add(newUser);
         }
 
         public User Login(string email, string password)
         {
-            return users.Find(user => user.Email == email && user.Password == password);
+            User user = users.Find(u => u.Email == email && u.Password == password);
+            if (user == null)
+            {
+                throw new ArgumentException("メールアドレスまたはパスワードが間違っています。");
+            }
+
+            return user;
         }
     }
 }
